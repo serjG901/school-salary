@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    --color-bg: #242424;
+    --color-text: rgba(255, 255, 255, 0.87);
+
+    --color-balance: lime;
+    --color-balance-minus: coral;
+    --color-balance-description: gray;
+
+    --color-summ-tasks: greenyellow;
+    --color-summ-payments: yellow;
+
+    --color-bg-details: rgba(71, 61, 139);
+    --color-border-details: black;
+
+    --color-bg-confirm: darkolivegreen;
+    --color-bg-not-confirm: lightslategrey;
+
+    --color-bg-button: #1a1a1a;
+    --color-border-button: #646cff;
+
+    --color-task-cost: var(--color-summ-tasks);
+    --color-payment-amount: var(--color-summ-payments);
+
+    --color-border-card: black;
+
+    color-scheme: light dark;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-bg: lightslategrey;
+        --color-text: black;
+
+        --color-balance: lime;
+        --color-balance-minus: coral;
+        --color-balance-description: black;
+
+        --color-summ-tasks: greenyellow;
+        --color-summ-payments: yellow;
+
+        --color-bg-details: lightsteelblue;
+        --color-border-details: gray;
+
+        --color-bg-confirm: darkolivegreen;
+        --color-bg-not-confirm: lightgray;
+
+        --color-bg-button: #f9f9f9;
+        --color-border-button: #646cff;
+
+        --color-task-cost: var(--color-summ-tasks);
+        --color-payment-amount: var(--color-summ-payments);
+
+        --color-border-card: gray;
+    }
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    min-width: 320px;
+    width: 100vw;
+    min-height: 100vh;
+}
