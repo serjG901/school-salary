@@ -1,2 +1,2 @@
 # school-salary
- do good learning and give money
+ do learning and get money
