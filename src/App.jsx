@@ -351,6 +351,7 @@ function App() {
                                                 </button>
                                             </form>
                                         </div>
+                                        <div className='date'>{payment.date}</div>
                                         <div className='amount'>
                                             {payment.amount}
                                         </div>
