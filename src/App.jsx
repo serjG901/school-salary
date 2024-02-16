@@ -66,7 +66,6 @@ function App() {
         .reduce((acc, a) => acc + +a.amount, 0);
     const balance = sumTasks - sumPayments;
 
-    let quantityTaskCost = 0;
     const statTasks = Object.entries(
         Object.groupBy(tasks, ({ description }) => description)
     )
@@ -77,7 +76,6 @@ function App() {
             ];
         })
         .map((desk) => {
-            quantityTaskCost += desk[1].length;
             return (
                 <div key={desk[0]}>
                     {desk[0]}: {desk[1].join(", ")} ={" "}
@@ -85,6 +83,27 @@ function App() {
                         desk[1].reduce((acc, cost) => acc + +cost, 0) /
                             desk[1].length
                     )}
+                </div>
+            );
+        });
+
+    const statPayments = Object.entries(
+        Object.groupBy(payments, ({ description }) => description)
+    )
+        .map((desk) => {
+            return [
+                desk[0],
+                desk[1].reduce(
+                    (acc, payment) => (acc.push(payment.amount), acc),
+                    []
+                ),
+            ];
+        })
+        .map((desk) => {
+            return (
+                <div key={desk[0]}>
+                    {desk[0]}: {desk[1].join(", ")} ={" "}
+                    {desk[1].reduce((acc, cost) => acc + +cost, 0)}
                 </div>
             );
         });
@@ -259,7 +278,7 @@ function App() {
                 <div>Статистика</div>
                 <div>(предет: оценки = средняя)</div>
                 {statTasks}
-                <div>всего оценок: {quantityTaskCost}</div>
+                <div>всего оценок: {tasks.length}</div>
             </div>
             <details>
                 <summary>Платежи</summary>
@@ -276,7 +295,7 @@ function App() {
                                 <input type='date' id='payment-date' required />
                             </label>
                             <label htmlFor='payment-amount'>
-                                <span>Количество</span>
+                                <span>Сумма</span>
                                 <input
                                     type='number'
                                     id='payment-amount'
@@ -340,7 +359,7 @@ function App() {
                                                         />
                                                     </label>
                                                     <label htmlFor='payment-amount'>
-                                                        <span>Количество</span>
+                                                        <span>Сумма</span>
                                                         <input
                                                             type='number'
                                                             id='payment-amount'
@@ -414,6 +433,12 @@ function App() {
                             })}
                 </div>
             </details>
+            <div>
+                <div>Статистика</div>
+                <div>(За что / наличка / безнал: платежи = сумма)</div>
+                {statPayments}
+                <div>всего платежей: {payments.length}</div>
+            </div>
         </>
     );
 }
