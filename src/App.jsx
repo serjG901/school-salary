@@ -231,7 +231,7 @@ function App() {
                                 );
                             })}
                     
-{Object.groupBy(tasks, ({ description }) => description).entries().map(desk => [desk[0], desk[1].reduce((acc, task) => acc.push(task.cost), [] )]).map(desk => {
+{[...Object.groupBy(tasks, ({ description }) => description).entries()].map(desk => [desk[0], desk[1].reduce((acc, task) => acc.push(task.cost), [] )]).map(desk => {
 return <div>{desk[0]}: {desk[1].toString()} средняя {Math.round(desk[1].reduce((acc, cost) =>acc + cost,0)/desk[1].length)}</div>;
 })}
 
