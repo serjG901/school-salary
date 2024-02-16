@@ -80,7 +80,7 @@ function App() {
             quantityTaskCost += desk[1].length;
             return (
                 <div key={desk[0]}>
-                    {desk[0]}: {desk[1].toString()} средняя{" "}
+                    {desk[0]}: {desk[1].join(", ")} ={" "}
                     {Math.round(
                         desk[1].reduce((acc, cost) => acc + +cost, 0) /
                             desk[1].length
@@ -97,21 +97,21 @@ function App() {
                     data-balance={balance >= 0 ? "+" : "-"}
                 >
                     <div>{balance}</div>
-                    <div>balance</div>
+                    <div>баланс</div>
                 </div>
                 <div className='sum-tasks'>
                     <div>{sumTasks}</div>
-                    <div>sum of tasks</div>
+                    <div>сумма оценок</div>
                 </div>
                 <div className='sum-payments'>
                     <div>{sumPayments}</div>
-                    <div>sum of payments</div>
+                    <div>сумма денег</div>
                 </div>
             </div>
             <details>
-                <summary>Tasks</summary>
+                <summary>Оценки</summary>
                 <details>
-                    <summary>Add Task</summary>
+                    <summary>Добавить оценку</summary>
                     <form
                         action='submit'
                         id='add-task'
@@ -119,11 +119,11 @@ function App() {
                     >
                         <div>
                             <label htmlFor='task-date'>
-                                <span>Date</span>
+                                <span>Дата</span>
                                 <input type='date' id='task-date' required />
                             </label>
                             <label htmlFor='task-cost'>
-                                <span>Cost</span>
+                                <span>Оценка</span>
                                 <input
                                     type='number'
                                     id='task-cost'
@@ -133,7 +133,7 @@ function App() {
                                 />
                             </label>
                             <label htmlFor='task-description'>
-                                <span>Description</span>
+                                <span>Предмет</span>
                                 <input
                                     type='text'
                                     id='task-description'
@@ -141,11 +141,11 @@ function App() {
                                 />
                             </label>
                             <label htmlFor='task-confirm'>
-                                Confirm
+                                Подтверждено
                                 <input type='checkbox' id='task-confirm' />
                             </label>
                         </div>
-                        <button type='submit'>Add task</button>
+                        <button type='submit'>Добавить оценку</button>
                     </form>
                 </details>
                 <div className='tasks'>
@@ -176,7 +176,7 @@ function App() {
                                             >
                                                 <div>
                                                     <label htmlFor='task-date'>
-                                                        <span>Date</span>
+                                                        <span>Дата</span>
                                                         <input
                                                             type='date'
                                                             id='task-date'
@@ -187,7 +187,7 @@ function App() {
                                                         />
                                                     </label>
                                                     <label htmlFor='task-cost'>
-                                                        <span>Cost</span>
+                                                        <span>Оценка</span>
                                                         <input
                                                             type='number'
                                                             id='task-cost'
@@ -200,7 +200,7 @@ function App() {
                                                         />
                                                     </label>
                                                     <label htmlFor='task-description'>
-                                                        <span>Description</span>
+                                                        <span>Предмет</span>
                                                         <input
                                                             type='text'
                                                             id='task-description'
@@ -211,7 +211,7 @@ function App() {
                                                         />
                                                     </label>
                                                     <label htmlFor='task-confirm'>
-                                                        Confirm
+                                                        Подтверждено
                                                         <input
                                                             type='checkbox'
                                                             id='task-confirm'
@@ -222,7 +222,7 @@ function App() {
                                                     </label>
                                                 </div>
                                                 <button type='submit'>
-                                                    Update task
+                                                    Обновить оценку
                                                 </button>
                                             </form>
                                         </div>
@@ -241,14 +241,14 @@ function App() {
                                             }
                                         >
                                             {task.confirm
-                                                ? "Confirm"
-                                                : "Not confirm"}
+                                                ? "Подтверждена"
+                                                : "Не подтверждена"}
                                         </div>
                                         <button
                                             className='update'
                                             popovertarget={`update-popover-${task.id}`}
                                         >
-                                            update
+                                            Обновить
                                         </button>
                                     </div>
                                 );
@@ -256,13 +256,15 @@ function App() {
                 </div>
             </details>
             <div>
+                <div>Статистика</div>
+                <div>(предет: оценки = средняя)</div>
                 {statTasks}
                 <div>всего оценок: {quantityTaskCost}</div>
             </div>
             <details>
-                <summary>Payments</summary>
+                <summary>Платежи</summary>
                 <details>
-                    <summary>Add Payment</summary>
+                    <summary>Добавить платеж</summary>
                     <form
                         action='submit'
                         id='add-payment'
@@ -270,11 +272,11 @@ function App() {
                     >
                         <div>
                             <label htmlFor='payment-date'>
-                                <span>Date</span>
+                                <span>Дата</span>
                                 <input type='date' id='payment-date' required />
                             </label>
                             <label htmlFor='payment-amount'>
-                                <span>Amount</span>
+                                <span>Количество</span>
                                 <input
                                     type='number'
                                     id='payment-amount'
@@ -284,7 +286,7 @@ function App() {
                                 />
                             </label>
                             <label htmlFor='payment-description'>
-                                <span>Description</span>
+                                <span>За что / наличка / безнал</span>
                                 <input
                                     type='text'
                                     id='payment-description'
@@ -292,11 +294,11 @@ function App() {
                                 />
                             </label>
                             <label htmlFor='payment-confirm'>
-                                Confirm
+                                Подтверждено
                                 <input type='checkbox' id='payment-confirm' />
                             </label>
                         </div>
-                        <button type='submit'>Add payment</button>
+                        <button type='submit'>Добавить платеж</button>
                     </form>
                 </details>
                 <div className='payments'>
@@ -327,7 +329,7 @@ function App() {
                                             >
                                                 <div>
                                                     <label htmlFor='payment-date'>
-                                                        <span>Date</span>
+                                                        <span>Дата</span>
                                                         <input
                                                             type='date'
                                                             id='payment-date'
@@ -338,7 +340,7 @@ function App() {
                                                         />
                                                     </label>
                                                     <label htmlFor='payment-amount'>
-                                                        <span>Amount</span>
+                                                        <span>Количество</span>
                                                         <input
                                                             type='number'
                                                             id='payment-amount'
@@ -351,7 +353,10 @@ function App() {
                                                         />
                                                     </label>
                                                     <label htmlFor='payment-description'>
-                                                        <span>Description</span>
+                                                        <span>
+                                                            За что / наличка /
+                                                            безнал
+                                                        </span>
                                                         <input
                                                             type='text'
                                                             id='payment-description'
@@ -362,7 +367,7 @@ function App() {
                                                         />
                                                     </label>
                                                     <label htmlFor='payment-confirm'>
-                                                        Confirm
+                                                        Подтверждено
                                                         <input
                                                             type='checkbox'
                                                             id='payment-confirm'
@@ -373,7 +378,7 @@ function App() {
                                                     </label>
                                                 </div>
                                                 <button type='submit'>
-                                                    Update payment
+                                                    Обновить платеж
                                                 </button>
                                             </form>
                                         </div>
@@ -395,14 +400,14 @@ function App() {
                                             }
                                         >
                                             {payment.confirm
-                                                ? "Confirm"
-                                                : "Not confirm"}
+                                                ? "Подтвержден"
+                                                : "Не подтвержден"}
                                         </div>
                                         <button
                                             className='update'
                                             popovertarget={`update-popover-${payment.id}`}
                                         >
-                                            update
+                                            Обновить
                                         </button>
                                     </div>
                                 );
