@@ -230,14 +230,35 @@ function App() {
                                     </div>
                                 );
                             })}
-                    
-{[...Object.groupBy(tasks, ({ description }) => description).entries()].map(desk => [desk[0], desk[1].reduce((acc, task) => acc.push(task.cost), [] )]).map(desk => {
-return <div>{desk[0]}: {desk[1].toString()} средняя {Math.round(desk[1].reduce((acc, cost) =>acc + cost,0)/desk[1].length)}</div>;
-})}
-
                 </div>
             </details>
-
+            <div>
+                {Object.entries(
+                    Object.groupBy(tasks, ({ description }) => description)
+                )
+                    .map((desk) => {
+                        return [
+                            desk[0],
+                            desk[1].reduce(
+                                (acc, task) => (acc.push(task.cost), acc),
+                                []
+                            ),
+                        ];
+                    })
+                    .map((desk) => {
+                        return (
+                            <div key={desk[0]}>
+                                {desk[0]}: {desk[1].toString()} средняя{" "}
+                                {Math.round(
+                                    desk[1].reduce(
+                                        (acc, cost) => acc + +cost,
+                                        0
+                                    ) / desk[1].length
+                                )}
+                            </div>
+                        );
+                    })}
+            </div>
             <details>
                 <summary>Payments</summary>
                 <details>
@@ -356,7 +377,9 @@ return <div>{desk[0]}: {desk[1].toString()} средняя {Math.round(desk[1].r
                                                 </button>
                                             </form>
                                         </div>
-                                        <div className='date'>{payment.date}</div>
+                                        <div className='date'>
+                                            {payment.date}
+                                        </div>
                                         <div className='amount'>
                                             {payment.amount}
                                         </div>
