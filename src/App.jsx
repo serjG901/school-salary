@@ -66,6 +66,29 @@ function App() {
         .reduce((acc, a) => acc + +a.amount, 0);
     const balance = sumTasks - sumPayments;
 
+    let quantityTaskCost = 0;
+    const statTasks = Object.entries(
+        Object.groupBy(tasks, ({ description }) => description)
+    )
+        .map((desk) => {
+            return [
+                desk[0],
+                desk[1].reduce((acc, task) => (acc.push(task.cost), acc), []),
+            ];
+        })
+        .map((desk) => {
+            quantityTaskCost += desk[1].length;
+            return (
+                <div key={desk[0]}>
+                    {desk[0]}: {desk[1].toString()} средняя{" "}
+                    {Math.round(
+                        desk[1].reduce((acc, cost) => acc + +cost, 0) /
+                            desk[1].length
+                    )}
+                </div>
+            );
+        });
+
     return (
         <>
             <div className='salary'>
@@ -133,7 +156,7 @@ function App() {
                                     Date.parse(new Date(task1.date)) -
                                     Date.parse(new Date(task2.date))
                             )
-                            .map((task) => {
+                            .map((task, i) => {
                                 return (
                                     <div key={task.id} className='task'>
                                         <div
@@ -233,31 +256,8 @@ function App() {
                 </div>
             </details>
             <div>
-                {Object.entries(
-                    Object.groupBy(tasks, ({ description }) => description)
-                )
-                    .map((desk) => {
-                        return [
-                            desk[0],
-                            desk[1].reduce(
-                                (acc, task) => (acc.push(task.cost), acc),
-                                []
-                            ),
-                        ];
-                    })
-                    .map((desk) => {
-                        return (
-                            <div key={desk[0]}>
-                                {desk[0]}: {desk[1].toString()} средняя{" "}
-                                {Math.round(
-                                    desk[1].reduce(
-                                        (acc, cost) => acc + +cost,
-                                        0
-                                    ) / desk[1].length
-                                )}
-                            </div>
-                        );
-                    })}
+                {statTasks}
+                <div>всего оценок: {quantityTaskCost}</div>
             </div>
             <details>
                 <summary>Payments</summary>
