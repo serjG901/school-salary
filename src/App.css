@@ -203,8 +203,8 @@ label:has(input:valid) > span {
   padding: 2rem;
 }
 
-.clearAll {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
+.clear-all {
+    margin-block: 5rem;
+    width: max-content;
+    color: red;
 }
