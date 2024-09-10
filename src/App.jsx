@@ -290,7 +290,7 @@ function App() {
             </details>
             <div>
                 <div>Статистика</div>
-                <div>(предет: оценки = средняя)</div>
+                <div>(предмет: оценки = средняя)</div>
                 {statTasks}
                 <div>всего оценок: {tasks.length}</div>
             </div>
