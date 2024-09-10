@@ -4,6 +4,10 @@ import { persist } from "zustand/middleware";
 export const useStore = create()(
     persist(
         (set, get) => ({
+           /* dbNames: "new db"+Math.round(Math.random()*1000),
+            changeDbName: (newDbName) => {
+
+            }*/
             id: 0,
             tasks: [],
             addTask: (newTask) =>
@@ -36,6 +40,11 @@ export const useStore = create()(
                     );
                     return { payments: [...filtredPayments, updatedPayment] };
                 }),
+            clearAll: () => {
+                set(()=>{
+                    return {tasks: [], payments: []};
+                });
+            }
         }),
         {
             name: "school-salary3",

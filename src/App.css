@@ -202,3 +202,9 @@ label:has(input:valid) > span {
 .popover form {
   padding: 2rem;
 }
+
+.clearAll {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}

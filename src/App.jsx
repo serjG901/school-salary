@@ -2,7 +2,7 @@ import { useStore } from "./store/store";
 import "./App.css";
 
 function App() {
-    const [tasks, addTask, updateTask, payments, addPayment, updatePayment] =
+    const [tasks, addTask, updateTask, payments, addPayment, updatePayment, clearAll] =
         useStore((state) => [
             state.tasks,
             state.addTask,
@@ -10,6 +10,7 @@ function App() {
             state.payments,
             state.addPayment,
             state.updatePayment,
+            state.clearAll
         ]);
 
     const handleSubmitTask = (e) => {
@@ -108,9 +109,22 @@ function App() {
             );
         });
 
+        const handleClearAll = () => {
+            const confirm = window.confirm('Удалить все данные?');
+            if (confirm) clearAll();
+        }
+
+
     return (
         <>
             <div className='salary'>
+                <button 
+                    type='button' 
+                    className='clear-all'
+                    onClick={handleClearAll}
+                    >
+                        Удалить все данные
+                </button>
                 <div
                     className='balance'
                     data-balance={balance >= 0 ? "+" : "-"}
