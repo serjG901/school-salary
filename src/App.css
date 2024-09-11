@@ -1,26 +1,26 @@
 #root {
-    text-align: center;
-    min-width: 300px;
-    width: 100%;
+  text-align: center;
+  min-width: 300px;
+  width: 100%;
 }
 
 button,
 summary,
 input {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: var(--color-bg-button);
-    cursor: pointer;
-    transition: border-color 0.25s;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-bg-button);
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 button:hover,
 summary:hover,
 input:hover {
-    border-color: var(--color-border-button);
+  border-color: var(--color-border-button);
 }
 button:focus,
 button:focus-visible,
@@ -28,175 +28,173 @@ summary:focus,
 summary:focus-visible,
 input:focus,
 input:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto -webkit-focus-ring-color;
 }
 
-details:has(details) {
-    margin: 2rem 0;
-    background-color: var(--color-bg-details);
-    border-radius: 8px;
-    width: 100%;
+details {
+  margin: 2rem 0;
+  background-color: var(--color-bg-details);
+  border-radius: 8px;
+  width: 100%;
 }
 
-details > details {
-    width: 70%;
-    opacity: 0.8;
-    margin: 1rem auto;
-    border: 1px solid var(--color-border-details);
-    border-radius: 8px;
-    box-shadow: 1px 1px 8px rgb(0 0 0 /0.2), -1px 1px 8px rgb(0 0 0 /0.2);
+details {
+  margin: 1rem auto;
+  border: 1px solid var(--color-border-details);
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px rgb(0 0 0 /0.2), -1px 1px 8px rgb(0 0 0 /0.2);
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
 }
 
 label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0 0 0;
 }
 
 label:has(input[type="checkbox"]) {
-    background-color: var(--color-bg-not-confirm);
-    cursor: pointer;
-    margin-bottom: 1.5rem;
+  background-color: var(--color-bg-not-confirm);
+  cursor: pointer;
+  margin-bottom: 1.5rem;
 }
 
 label:has(input[type="checkbox"]:checked) {
-    background-color: var(--color-bg-confirm);
+  background-color: var(--color-bg-confirm);
 }
 
 input[type="date"] {
-    color: transparent;
+  color: transparent;
 }
 
 input[type="date"]:focus,
 input[type="date"]:valid {
-    color: inherit;
+  color: inherit;
 }
 
 label > span {
-    position: absolute;
-    transition: transform 0.3s linear;
+  position: absolute;
+  transition: transform 0.3s linear;
 }
 
 label:has(input:focus) > span {
-    transform: translateY(-2rem);
+  transform: translateY(-2rem);
 }
 
 label:has(input:valid) > span {
-    transform: translateY(-2rem);
+  transform: translateY(-2rem);
 }
 
 .tasks,
 .payments {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    max-width: 90vw;
-    padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 90vw;
+  padding: 1rem;
 }
 
 .payment,
 .task {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    word-break: break-word;
-    padding: 1rem;
-    max-width: 50%;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid var(--color-border-card);
-    border-radius: 8px;
-    box-shadow: 1px 1px 8px rgb(0 0 0 /0.2), -1px 1px 8px rgb(0 0 0 /0.2);
-    opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  word-break: break-word;
+  padding: 1rem;
+  max-width: 50%;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid var(--color-border-card);
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px rgb(0 0 0 /0.2), -1px 1px 8px rgb(0 0 0 /0.2);
+  opacity: 0.8;
 }
 
 .payment > div,
 .task > div {
-    padding: 0 4px;
+  padding: 0 4px;
 }
 
 .cost,
 .amount {
-    font-size: 2rem;
-    font-weight: 700;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .cost {
-    color: var(--color-task-cost);
+  color: var(--color-task-cost);
 }
 
 .amount {
-    color: var(--color-payment-amount);
+  color: var(--color-payment-amount);
 }
 
 .confirm {
-    width: calc(100% + 2rem);
+  width: calc(100% + 2rem);
 }
 
 .confirm[data-confirm="Confirm"] {
-    background-color: var(--color-bg-confirm);
+  background-color: var(--color-bg-confirm);
 }
 
 .confirm[data-confirm="Not confirm"] {
-    background-color: var(--color-bg-not-confirm);
+  background-color: var(--color-bg-not-confirm);
 }
 
 .salary {
-    display: grid;
-    grid-template:
-        "balance balance"
-        "sumtasks sumpayments";
-    padding: 2rem;
+  display: grid;
+  grid-template:
+    "balance balance"
+    "sumtasks sumpayments";
+  padding: 2rem;
 }
 
 .salary > div > div:last-child {
-    color: var(--color-balance-description);
-    font-size: 1rem;
+  color: var(--color-balance-description);
+  font-size: 1rem;
 }
 
 .balance {
-    grid-area: balance;
-    font-size: 4rem;
-    font-weight: 700;
-    color: var(--color-balance);
+  grid-area: balance;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-balance);
 }
 
 .balance[data-balance="-"] {
-    color: var(--color-balance-minus);
+  color: var(--color-balance-minus);
 }
 
 .sum-tasks {
-    grid-area: sumtasks;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-summ-tasks);
+  grid-area: sumtasks;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-summ-tasks);
 }
 
 .sum-payments {
-    grid-area: sumpayments;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-summ-payments);
+  grid-area: sumpayments;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-summ-payments);
 }
 
 .popover {
-    border: 1px solid var(--color-border-card);
-    border-radius: 8px;
-    box-shadow: 1px 1px 8px rgb(0 0 0 /0.2), -1px 1px 8px rgb(0 0 0 /0.2);
-    background-color: var(--color-bg-details);
+  border: 1px solid var(--color-border-card);
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px rgb(0 0 0 /0.2), -1px 1px 8px rgb(0 0 0 /0.2);
+  background-color: var(--color-bg-details);
 }
 
 .popover::backdrop {
-    background-color: rgb(0 0 0 /0.5);
+  background-color: rgb(0 0 0 /0.5);
 }
 
 .popover form {
@@ -204,7 +202,52 @@ label:has(input:valid) > span {
 }
 
 .clear-all {
-    margin-block: 5rem;
-    width: max-content;
-    color: red;
+  margin-block: 5rem;
+  width: max-content;
+  color: red;
+}
+
+.statistic {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 0.5rem;
+}
+
+.statistic > div {
+  display: contents;
+}
+
+.statistic > div:first-child {
+  color: var(--color-balance-description);
+  div:nth-child(2) {
+    text-align: center;
+  }
+}
+
+.statistic > div:last-child {
+  color: var(--color-balance-description);
+  div:nth-child(2) {
+    color: var(--color-text);
+  }
+  div:nth-child(3) {
+    color: var(--color-text);
+  }
+}
+
+.statistic > div > div {
+  padding: 0.5rem;
+}
+
+.statistic > div > div {
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+
+.break-line {
+  width: 100%;
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+
+.group {
+  margin-block: 4rem;
 }
