@@ -300,7 +300,11 @@ function App() {
               </label>
               <label htmlFor='task-confirm'>
                 Подтверждено
-                <input type='checkbox' id='task-confirm' />
+                <input
+                  type='checkbox'
+                  id='task-confirm'
+                  defaultChecked={true}
+                />
               </label>
             </div>
             <button type='submit'>Добавить оценку</button>
@@ -379,7 +383,11 @@ function App() {
               </label>
               <label htmlFor='payment-confirm'>
                 Подтверждено
-                <input type='checkbox' id='payment-confirm' />
+                <input
+                  type='checkbox'
+                  id='payment-confirm'
+                  defaultChecked={true}
+                />
               </label>
             </div>
             <button type='submit'>Добавить платеж</button>
